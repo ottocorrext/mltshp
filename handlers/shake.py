@@ -1,10 +1,11 @@
+from __future__ import absolute_import
 import tornado.web
 from tornado.escape import json_encode
 from tornado import escape
 import torndb
 from tornado.options import options
 
-from base import BaseHandler, require_membership
+from .base import BaseHandler, require_membership
 from models import Shake, User, Notification, ShakeManager, MigrationState
 from lib.utilities import base36decode
 

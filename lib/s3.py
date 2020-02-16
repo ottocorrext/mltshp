@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from boto.s3.connection import S3Connection as Connection
 
 from tornado.options import options

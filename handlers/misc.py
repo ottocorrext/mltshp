@@ -1,4 +1,5 @@
-from base import BaseHandler
+from __future__ import absolute_import
+from .base import BaseHandler
 
 import postmark
 

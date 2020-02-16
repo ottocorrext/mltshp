@@ -2,6 +2,7 @@
 Adds a migration_state table.
 """
 
+from __future__ import absolute_import
 from yoyo import step
 
 __depends__ = {}

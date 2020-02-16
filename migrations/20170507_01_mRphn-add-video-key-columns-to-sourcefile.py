@@ -2,6 +2,7 @@
 Add video key columns to sourcefile
 """
 
+from __future__ import absolute_import
 from yoyo import step
 
 __depends__ = {'20170429_01_0ad8s-add-deleted-column-to-shake-table'}

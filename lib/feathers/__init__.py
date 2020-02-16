@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 import sys
-import urllib
-import urlparse
+import six.moves.urllib.request, six.moves.urllib.parse, six.moves.urllib.error
+import six.moves.urllib.parse
 import hmac
 import hashlib
 import binascii
@@ -9,6 +10,7 @@ import uuid
 
 import tornado.httpclient
 import tornado.ioloop
+import six
 
 class Feathers(object):
     """
@@ -71,7 +73,7 @@ class Feathers(object):
         return self.endpoint + self.api_version + method + '.' + self.format
     
     def _build_url(self, base_url, params):
-        query = '' if not params else '?' + urllib.urlencode(params)
+        query = '' if not params else '?' + six.moves.urllib.parse.urlencode(params)
         return base_url + query
     
     def _fetch(self, url, headers={}, callback=None):
@@ -96,7 +98,7 @@ class Feathers(object):
 
         See http://oauth.net/core/1.0/#signing_process
         """
-        parts = urlparse.urlparse(url)
+        parts = six.moves.urllib.parse.urlparse(url)
         scheme, netloc, path = parts[:3]
         normalized_url = scheme.lower() + "://" + netloc.lower() + path
 
@@ -119,6 +121,6 @@ class Feathers(object):
         """
         From tornado.auth
         """
-        if isinstance(val, unicode):
+        if isinstance(val, six.text_type):
             val = val.encode("utf-8")
-        return urllib.quote(val, safe="~")
+        return six.moves.urllib.parse.quote(val, safe="~")

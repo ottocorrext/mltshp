@@ -1,7 +1,8 @@
+from __future__ import absolute_import
 from datetime import datetime
 import time
-from urllib import urlencode
-from urlparse import urlparse, urlunparse, urljoin
+from six.moves.urllib.parse import urlencode
+from six.moves.urllib.parse import urlparse, urlunparse, urljoin
 from hashlib import sha1
 import hmac
 import base64
@@ -10,10 +11,11 @@ import functools
 import tornado.web
 from tornado.options import define, options
 
-from base import BaseHandler
+from .base import BaseHandler
 from lib.utilities import normalize_string, base36decode
 from models import Accesstoken, Apihit, Apilog, App, Authorizationcode, \
     Favorite, Magicfile, Sharedfile, User, Shake, Comment
+from six.moves import range
 
 
 def oauth2authenticated(method):

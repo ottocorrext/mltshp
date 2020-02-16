@@ -1,5 +1,6 @@
+from __future__ import absolute_import
 from models import User, ExternalRelationship
-from base import BaseTestCase
+from .base import BaseTestCase
 
 
 class ExternalRelationshipTests(BaseTestCase):

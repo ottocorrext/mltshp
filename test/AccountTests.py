@@ -1,10 +1,11 @@
+from __future__ import absolute_import
 from tornado.testing import AsyncHTTPTestCase
 from torndb import Connection
 from tornado.httpclient import HTTPRequest
 from tornado.escape import json_decode
 
 
-import Cookie
+import six.moves.http_cookies
 import base64
 import time
 import copy
@@ -13,9 +14,10 @@ import random
 import os
 
 
-from base import BaseAsyncTestCase
+from .base import BaseAsyncTestCase
 
 from models import User, Sourcefile, Sharedfile, Shake, Subscription, Notification, Post
+from six.moves import range
 
 class AccountIndexTests(BaseAsyncTestCase):
     def setUp(self):

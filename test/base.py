@@ -1,13 +1,14 @@
+from __future__ import absolute_import
 import tornado.ioloop
 from tornado.testing import AsyncHTTPTestCase, LogTrapTestCase
 from tornado.httpclient import HTTPRequest
 from tornado.options import options
-import Cookie
+import six.moves.http_cookies
 from lib.flyingcow import db as _db
 from main import MltshpApplication
 from tornado.escape import json_encode
 from routes import routes
-import urllib
+import six.moves.urllib.request, six.moves.urllib.parse, six.moves.urllib.error
 import shutil
 import os
 import time
@@ -59,7 +60,7 @@ class BaseAsyncTestCase(AsyncHTTPTestCase, LogTrapTestCase):
         self.sid = None
 
     def get_sid(self, response):
-        cookie = Cookie.BaseCookie(response.headers['Set-Cookie'])
+        cookie = six.moves.http_cookies.BaseCookie(response.headers['Set-Cookie'])
         return cookie['sid'].value
 
     def get_xsrf(self):
@@ -133,7 +134,7 @@ class BaseAsyncTestCase(AsyncHTTPTestCase, LogTrapTestCase):
         else:
             kwargs['headers'] = headers
         arguments['_xsrf'] = xsrf
-        body = urllib.urlencode(arguments)
+        body = six.moves.urllib.parse.urlencode(arguments)
         return self.fetch(path, method="POST", body=body, **kwargs)
 
     def fetch_url(self, path, **kwargs):

@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import time
 from tornado.httpclient import HTTPRequest
 from tornado.escape import url_escape

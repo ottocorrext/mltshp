@@ -1,7 +1,8 @@
+from __future__ import absolute_import
 import datetime
 import re
 import json
-from urllib import urlencode
+from six.moves.urllib.parse import urlencode
 
 import tornado.httpclient
 import tornado.web
@@ -11,7 +12,7 @@ import torndb
 import postmark
 from recaptcha.client import captcha
 
-from base import BaseHandler, require_membership
+from .base import BaseHandler, require_membership
 from models import User, Invitation, Shake, Notification, Conversation, Invitation,\
     App, PaymentLog, Voucher, Promotion, MigrationState
 from lib.utilities import email_re, base36decode, is_valid_voucher_key,\

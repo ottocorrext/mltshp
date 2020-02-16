@@ -2,6 +2,7 @@
 Add deleted column to shake table
 """
 
+from __future__ import absolute_import
 from yoyo import step
 
 __depends__ = {'20170423_02_j66Zl-add-stripe-plan-id-to-user-table'}

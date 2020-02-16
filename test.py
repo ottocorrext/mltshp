@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import absolute_import
 import unittest
 from torndb import Connection
 from tornado.options import options
@@ -75,7 +76,7 @@ if __name__ == '__main__':
     db = Connection(options.database_host, 'mysql', options.database_user, options.database_password)
     try:
         db.execute("CREATE database %s" % options.database_name)
-    except MySQLdb.ProgrammingError, exc:
+    except MySQLdb.ProgrammingError as exc:
         if exc.args[0] != 1007:  # database already exists
             raise
     else:

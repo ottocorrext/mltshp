@@ -1,7 +1,8 @@
+from __future__ import absolute_import
 from lib.flyingcow import Model, Property
 from tornado.options import options
 from datetime import datetime, timedelta
-import authorizationcode
+from . import authorizationcode
 
 from hashlib import sha224
 from lib.utilities import base36encode

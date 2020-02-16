@@ -1,8 +1,9 @@
+from __future__ import absolute_import
 import datetime
 from functools import wraps
 
 from models import Apihit
-from base import BaseTestCase
+from .base import BaseTestCase
 
 
 class ApihitModelTests(BaseTestCase):

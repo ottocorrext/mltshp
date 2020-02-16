@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
+from __future__ import print_function
 import os.path
 import sys
 
@@ -18,6 +20,7 @@ import lib.uimodules
 import mltshpoptions
 from settings import settings
 import stripe
+import six
 
 AsyncHTTPClient.configure("tornado.curl_httpclient.CurlAsyncHTTPClient")
 
@@ -61,7 +64,7 @@ if __name__ == "__main__":
     if options.dump_settings:
         from pprint import pprint
         pprint({'options': dict((k, opt.value())
-                                for k, opt in options.iteritems()),
+                                for k, opt in six.iteritems(options)),
                 'app_settings': app_settings})
         sys.exit(0)
 
@@ -69,6 +72,6 @@ if __name__ == "__main__":
     application = MltshpApplication(routes, autoescape=None, **app_settings)
     http_server = tornado.httpserver.HTTPServer(application)
 
-    print "starting on port %s" % (options.on_port)
+    print("starting on port %s" % (options.on_port))
     http_server.listen(int(options.on_port))
     tornado.ioloop.IOLoop.instance().start()

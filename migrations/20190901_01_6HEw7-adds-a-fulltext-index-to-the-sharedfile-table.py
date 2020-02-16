@@ -2,6 +2,7 @@
 Adds a FULLTEXT index to the sharedfile table.
 """
 
+from __future__ import absolute_import
 from yoyo import step
 
 __depends__ = {'20170513_02_hJ1nf-add-stripe-plan-rate-column'}

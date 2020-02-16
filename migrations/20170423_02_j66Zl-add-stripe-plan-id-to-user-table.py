@@ -2,6 +2,7 @@
 Add stripe_plan_id column to user table
 """
 
+from __future__ import absolute_import
 from yoyo import step
 
 __depends__ = {'20170423_01_TwSED-adds-a-migration-state-table'}

@@ -1,10 +1,11 @@
+from __future__ import absolute_import
 import cStringIO
 import time
 import hashlib
 import calendar
 import random
 import re
-import urlparse
+import six.moves.urllib.parse
 from datetime import datetime
 
 from lib.s3 import S3Bucket
@@ -20,14 +21,14 @@ from tasks.counts import calculate_likes
 from tasks.migration import migrate_for_user
 from lib.badpasswords import bad_list
 
-import notification
-import subscription
-import shake
-import invitation
-import sharedfile
-import externalservice
-import invitation_request
-import shakemanager
+from . import notification
+from . import subscription
+from . import shake
+from . import invitation
+from . import sharedfile
+from . import externalservice
+from . import invitation_request
+from . import shakemanager
 # we use models.favorite due to some weird edge case where the reference
 # to the module gets lost.  To recreate, rename to "import favorite" and
 # change references from models.favorite to just favorite.  You can then
@@ -920,7 +921,7 @@ hello@mltshp.com
             self.add_error('website', "The URL is too long.")
             return False
         if self.website != '':
-            parsed = urlparse.urlparse(self.website)
+            parsed = six.moves.urllib.parse.urlparse(self.website)
             if parsed.scheme not in ('http', 'https',):
                 self.add_error('website', "Doesn't look to be a valid URL.")
                 return False
@@ -1042,4 +1043,4 @@ hello@mltshp.com
         h.update(secret)
         return h.hexdigest()
 
-from sharedfile import Sharedfile
+from .sharedfile import Sharedfile

@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from __future__ import print_function
 from tornado.options import define, options
 import mltshpoptions
 from settings import settings
@@ -13,6 +15,6 @@ backend = get_backend(
     (options.database_user, options.database_password,
      options.database_host, options.database_name))
 migrations = read_migrations("migrations")
-print "Applying migrations..."
+print("Applying migrations...")
 backend.apply_migrations(backend.to_apply(migrations))
-print "...complete!"
+print("...complete!")

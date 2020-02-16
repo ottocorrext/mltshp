@@ -2,6 +2,7 @@
 Convenience functions for creating database-persisted mltshp objects to
 test with.
 """
+from __future__ import absolute_import
 import models
 import lib.utilities
 

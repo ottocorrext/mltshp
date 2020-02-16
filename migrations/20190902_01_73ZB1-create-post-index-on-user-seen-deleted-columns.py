@@ -2,6 +2,7 @@
 Create post index on user, seen, deleted columns
 """
 
+from __future__ import absolute_import
 from yoyo import step
 
 __depends__ = {'20190901_01_6HEw7-adds-a-fulltext-index-to-the-sharedfile-table'}

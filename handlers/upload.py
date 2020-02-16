@@ -1,4 +1,5 @@
-from base import BaseHandler, require_membership
+from __future__ import absolute_import
+from .base import BaseHandler, require_membership
 
 import tornado.httpclient
 from tornado.httpclient import HTTPRequest
@@ -15,7 +16,7 @@ class UploadHandler(BaseHandler):
     """
     def check_xsrf_cookie(self): 
         user = self.get_current_user()
-        if self.request.headers.has_key('X-Verify-Credentials-Authorization') and not user:
+        if 'X-Verify-Credentials-Authorization' in self.request.headers and not user:
             return
         else:
             super(UploadHandler, self).check_xsrf_cookie()
@@ -64,7 +65,7 @@ class UploadHandler(BaseHandler):
                     raise tornado.web.HTTPError(403)
             else:
                 return self.redirect("/")
-        elif self.request.headers.has_key('X-Verify-Credentials-Authorization') and self.request.headers.has_key('X-Auth-Service-Provider'):
+        elif 'X-Verify-Credentials-Authorization' in self.request.headers and 'X-Auth-Service-Provider' in self.request.headers:
             #pm = postmark.PMMail(api_key=options.postmark_api_key,
             #    sender="hello@mltshp.com", to="notifications@mltshp.com", 
             #    subject="TWITTER REQUEST",

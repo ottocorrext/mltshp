@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import test.base
 import models
 from tornado.escape import json_decode

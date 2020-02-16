@@ -1,8 +1,10 @@
+from __future__ import absolute_import
 from models import User, Sharedfile, Sourcefile, Shake, Favorite, invitation, Shakesharedfile, Subscription, ShakeManager
-from base import BaseTestCase
+from .base import BaseTestCase
 import random, os, calendar
 from datetime import datetime
 from tornado.options import options
+from six.moves import range
 
 class UserModelTests(BaseTestCase):
 

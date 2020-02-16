@@ -1,9 +1,10 @@
+from __future__ import absolute_import
 from datetime import datetime
 from datetime import timedelta
 
 import tornado.web
 from tornado.options import options
-from base import BaseHandler, require_membership
+from .base import BaseHandler, require_membership
 
 from models import sharedfile, notification, user
 

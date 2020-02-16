@@ -1,10 +1,12 @@
+from __future__ import absolute_import
 import re
 import logging
 import time
 
-import error
-import db
-import properties
+from . import error
+from . import db
+from . import properties
+import six
 
 class MultipleRows(Exception):
     def __str__(self):
@@ -27,11 +29,10 @@ class BaseModel(type):
         new_class.properties()
         return new_class
 
-class Model(object):
+class Model(six.with_metaclass(BaseModel, object)):
     """
     The Model class that gets inherited to create table-specific Models.
     """
-    __metaclass__ = BaseModel
     
     def __init__(self, *args, **kwargs):
         self._id = None

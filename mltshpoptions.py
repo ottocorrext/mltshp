@@ -1,8 +1,10 @@
+from __future__ import absolute_import
 from tornado.options import define, options
+import six
 
 
 def parse_dictionary(settings):
-    for key, value in settings.iteritems():
+    for key, value in six.iteritems(settings):
         if key in options:
             setattr(options, key, value)
 

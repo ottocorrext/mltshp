@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from tornado.testing import AsyncHTTPTestCase
 from torndb import Connection
 from tornado.options import options
@@ -7,9 +8,10 @@ import base64
 import time
 import os
 
-from base import BaseAsyncTestCase
+from .base import BaseAsyncTestCase
 
 from models import Sourcefile, User
+from six.moves import range
 
 
 class AccountInfoTests(BaseAsyncTestCase):

@@ -1,7 +1,8 @@
+from __future__ import absolute_import
 import re
 import cStringIO
 from datetime import datetime
-from urlparse import urljoin
+from six.moves.urllib.parse import urljoin
 
 from tornado.options import options
 from lib.s3 import S3Bucket
@@ -13,7 +14,7 @@ from lib.flyingcow.cache import ModelQueryCache
 from lib.reservedshakenames import reserved_names
 from lib.utilities import transform_to_square_thumbnail, s3_url
 
-import user, shake, shakesharedfile, sharedfile, subscription, shakemanager
+from . import user, shake, shakesharedfile, sharedfile, subscription, shakemanager
 
 class Shake(ModelQueryCache, Model):
     user_id     = Property(name='user_id')

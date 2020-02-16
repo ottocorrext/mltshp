@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 import hashlib
 
-from base import BaseHandler
+from .base import BaseHandler
 import models
 import lib.utilities
 

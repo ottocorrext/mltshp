@@ -1,7 +1,8 @@
+from __future__ import absolute_import
 from models import Sharedfile, Sourcefile, User, Comment, Conversation
 from datetime import datetime, timedelta
 import os, shutil
-from base import BaseTestCase
+from .base import BaseTestCase
 
 class CommentModelTests(BaseTestCase):
 

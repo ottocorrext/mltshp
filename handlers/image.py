@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 import tempfile
 import re
-from urlparse import urlparse
+from six.moves.urllib.parse import urlparse
 import time
 from datetime import datetime, timedelta
 import tornado.web
@@ -8,7 +9,7 @@ from tornado import escape
 from tornado.escape import json_encode
 from tornado.options import options
 
-from base import BaseHandler, require_membership
+from .base import BaseHandler, require_membership
 from models import Favorite, User, Sharedfile, Sourcefile, Comment, Shake, Externalservice
 import models
 from lib.utilities import s3_authenticated_url, uses_a_banned_phrase

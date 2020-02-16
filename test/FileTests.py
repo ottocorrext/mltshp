@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from tornado.testing import AsyncHTTPTestCase
 from torndb import Connection
 from tornado.httpclient import HTTPRequest
@@ -11,13 +12,14 @@ import base64
 import time
 import json
 import os
-from urlparse import urlparse
+from six.moves.urllib.parse import urlparse
 from contextlib import contextmanager
 
-from base import BaseAsyncTestCase
+from .base import BaseAsyncTestCase
 
 from models import Sharedfile, Sourcefile, Favorite, User, Shake, Shakesharedfile, Post, Notification
 from lib.utilities import base36encode
+from six.moves import range
 
 
 @contextmanager

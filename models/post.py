@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from lib.flyingcow import Model, Property
 
 from datetime import datetime

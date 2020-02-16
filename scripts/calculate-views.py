@@ -5,6 +5,7 @@ last time this script was run.
 
 This script is run at a regular interval via cron.
 """
+from __future__ import absolute_import
 import json
 
 import models

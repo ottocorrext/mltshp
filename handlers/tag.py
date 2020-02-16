@@ -1,8 +1,9 @@
+from __future__ import absolute_import
 import tornado.web
 from tornado.escape import json_encode
 from tornado import escape
 
-from base import BaseHandler, require_membership
+from .base import BaseHandler, require_membership
 from models import Tag, TaggedFile
 from lib.utilities import base36decode
 

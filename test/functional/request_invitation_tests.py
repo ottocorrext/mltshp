@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import test.base
 from models import User, Shake, Notification, ShakeManager
 from tornado.escape import json_decode

@@ -1,4 +1,5 @@
-from base import BaseTestCase
+from __future__ import absolute_import
+from .base import BaseTestCase
 from models import User, Shake, Sourcefile, Sharedfile, Shakesharedfile, Post, Magicfile
 from tasks.timeline import add_posts, delete_posts
 from tornado.options import options

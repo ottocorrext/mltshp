@@ -1,7 +1,9 @@
+from __future__ import absolute_import
 from tornado.options import options
 
 from models import User, Shake, Sourcefile, Sharedfile, ShakeManager
-from base import BaseTestCase
+from .base import BaseTestCase
+from six.moves import range
 
 
 class ShakeModelTests(BaseTestCase):

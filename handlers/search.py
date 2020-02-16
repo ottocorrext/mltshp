@@ -1,9 +1,10 @@
+from __future__ import absolute_import
 import re
 
 import tornado.web
 from tornado import escape
 from tornado.options import options
-from base import BaseHandler, require_membership
+from .base import BaseHandler, require_membership
 import lib.utilities
 
 from models import sharedfile, user

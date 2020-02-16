@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import test.base
 import test.factories
 import models

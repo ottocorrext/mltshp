@@ -1,6 +1,7 @@
 
+from __future__ import absolute_import
 from models import User, Sharedfile, Sourcefile, Shake, Favorite, Comment, Conversation
-from base import BaseTestCase
+from .base import BaseTestCase
 
 class ConversationModelTests(BaseTestCase):
 

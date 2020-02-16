@@ -4,6 +4,8 @@
 Create a zip file of all the images posted or shared from 
 an account, zip into a file on S3, and email notification to them.
 """
+from __future__ import absolute_import
+from __future__ import print_function
 import models
 import sys
 from lib.s3 import S3Bucket
@@ -51,7 +53,7 @@ def make_zip_file(for_user=None):
     sfs = models.Sharedfile.where("user_id = %s and deleted=0 order by id", user.id)
 
     if sfs:
-        print(len(sfs))
+        print((len(sfs)))
         for sf in sfs:
             source = sf.sourcefile()
             if source.type == 'link':
@@ -71,7 +73,7 @@ def make_zip_file(for_user=None):
                 extension = "png"
 
             if extension == "":
-                print(sf.content_type)
+                print((sf.content_type))
                 print("extension blank")
                 sys.exit()
 

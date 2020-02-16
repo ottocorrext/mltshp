@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from functools import wraps
 
 from tornado.testing import AsyncHTTPTestCase
@@ -5,13 +6,13 @@ from torndb import Connection
 from tornado.httpclient import HTTPRequest
 from tornado.options import options
 import tornado.ioloop
-import Cookie
+import six.moves.http_cookies
 import base64
 import time
 import os
 import hashlib
 
-from base import BaseAsyncTestCase
+from .base import BaseAsyncTestCase
 from models import User, Sharedfile, Sourcefile, Externalservice
 
 

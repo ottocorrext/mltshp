@@ -2,6 +2,7 @@
 Add disable_autoplay column to user
 """
 
+from __future__ import absolute_import
 from yoyo import step
 
 __depends__ = {'20170507_01_mRphn-add-video-key-columns-to-sourcefile'}

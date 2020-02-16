@@ -1,5 +1,6 @@
+from __future__ import absolute_import
 import tornado
-import base
+from . import base
 
 class NotFoundHandler(base.BaseHandler):
     def check_xsrf_cookie(self):

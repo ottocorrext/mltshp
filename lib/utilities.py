@@ -1,12 +1,13 @@
+from __future__ import absolute_import
 import hashlib
 import re
 import hmac
 import time
 import json
 import base64
-import urllib
+import six.moves.urllib.request, six.moves.urllib.parse, six.moves.urllib.error
 from datetime import datetime
-import urllib
+import six.moves.urllib.request, six.moves.urllib.parse, six.moves.urllib.error
 
 from PIL import Image
 from tornado.options import options
@@ -15,6 +16,7 @@ import tornado.escape
 from tornado.httpclient import HTTPRequest
 
 from xml.dom import minidom
+import six
 
 
 PLANS = {
@@ -59,7 +61,7 @@ def s3_authenticated_url(s3_key, s3_secret, bucket_name=None, file_path=None,
     seconds = int(time.time()) + seconds
     to_sign = "GET\n\n\n%s\n/%s/%s" % (seconds, bucket_name, file_path)
     digest = hmac.new(s3_secret, to_sign, hashlib.sha1).digest()
-    signature = urllib.quote(base64.encodestring(digest).strip())
+    signature = six.moves.urllib.parse.quote(base64.encodestring(digest).strip())
     signature = "?AWSAccessKeyId=%s&Expires=%s&Signature=%s" % (s3_key, seconds, signature)
 
     if options.aws_host == "s3.amazonaws.com":
@@ -93,7 +95,7 @@ def s3_url(file_path):
 
 
 def base36encode(number, alphabet='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
-    if not isinstance(number, (int, long)):
+    if not isinstance(number, six.integer_types):
         raise TypeError('number must be an integer')
 
     # Special case for zero

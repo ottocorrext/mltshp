@@ -1,15 +1,16 @@
+from __future__ import absolute_import
 from datetime import datetime
 import time
 import uuid
 import hashlib
-from urlparse import urlparse
+from six.moves.urllib.parse import urlparse
 from tornado.options import options
 
 from lib.flyingcow import Model, Property
 from lib.utilities import base36encode, base36decode
 
-import user
-import accesstoken
+from . import user
+from . import accesstoken
 
 
 class App(Model):

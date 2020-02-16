@@ -2,6 +2,7 @@
 Use NULL video flags
 """
 
+from __future__ import absolute_import
 from yoyo import step
 
 __depends__ = {'20170509_01_bP9rC-add-disable-autoplay-column-to-user'}

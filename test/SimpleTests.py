@@ -1,8 +1,9 @@
+from __future__ import absolute_import
 from tornado.testing import AsyncHTTPTestCase
 import handlers
 import time
 from models import Sharedfile, Sourcefile, User
-from base import BaseAsyncTestCase
+from .base import BaseAsyncTestCase
 from handlers import base
 
 

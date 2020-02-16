@@ -1,11 +1,12 @@
+from __future__ import absolute_import
 from contextlib import contextmanager
 import time
 from datetime import datetime, timedelta
 import random
 import string
-from urlparse import urlparse
+from six.moves.urllib.parse import urlparse
 from hashlib import md5, sha1
-import urllib
+import six.moves.urllib.request, six.moves.urllib.parse, six.moves.urllib.error
 import hmac
 import base64
 import os
@@ -23,6 +24,8 @@ from models import Accesstoken, Apihit, App, Authorizationcode, Favorite, \
     ShakeManager, Sharedfile, Sourcefile, User, Comment
 from lib.utilities import normalize_string, base36encode
 from tasks.counts import calculate_likes
+from six.moves import range
+from six.moves import zip
 
 
 @contextmanager
@@ -995,7 +998,7 @@ def api_request(obj, url, unsigned=False, arguments={}, headers={}, method='GET'
     if method == 'GET':
         body = None
     elif arguments:
-        body = urllib.urlencode(arguments)
+        body = six.moves.urllib.parse.urlencode(arguments)
     if unsigned:
         request = HTTPRequest(url, method, headers, body)
     else:

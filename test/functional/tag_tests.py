@@ -1,5 +1,7 @@
+from __future__ import absolute_import
+from __future__ import print_function
 import json
-from urlparse import urlparse
+from six.moves.urllib.parse import urlparse
 
 import test.base
 import lib.utilities
@@ -52,7 +54,7 @@ class TagTests(test.base.BaseAsyncTestCase):
         response = self.post_url('/p/%s/create_tag' % self.sharedfile.share_key, {'tag':'asdf'})
         
 
-        print self.response.code
+        print(self.response.code)
         
         all_tags = Tag.all()
         all_tag_shared_files = TagSharedfile.all()

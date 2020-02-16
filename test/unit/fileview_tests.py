@@ -1,7 +1,8 @@
+from __future__ import absolute_import
 import datetime
 
 from models import Fileview
-from base import BaseTestCase
+from .base import BaseTestCase
 import test.factories
 
 class FileviewTests(BaseTestCase):

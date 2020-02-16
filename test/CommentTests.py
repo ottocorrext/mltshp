@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from tornado.testing import AsyncHTTPTestCase
 from tornado.web import Application
 from tornado.httpclient import HTTPRequest
@@ -5,7 +6,7 @@ from tornado.escape import json_decode, url_escape
 
 import time
 
-from base import BaseAsyncTestCase
+from .base import BaseAsyncTestCase
 
 from models import User, Sharedfile, Sourcefile, Conversation
 import models

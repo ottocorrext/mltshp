@@ -1,8 +1,10 @@
+from __future__ import absolute_import
 import unittest
 from lib.flyingcow import register_connection
 from tornado.options import options
 import string
 import random
+from six.moves import range
 
 class BaseTestCase(unittest.TestCase):        
     def setUp(self):
@@ -24,5 +26,5 @@ class BaseTestCase(unittest.TestCase):
         return db
         
     def generate_string_of_len(self, length):
-        return ''.join(random.choice(string.letters) for i in xrange(length))
+        return ''.join(random.choice(string.letters) for i in range(length))
     

@@ -2,6 +2,7 @@
 Add stripe_plan_rate column
 """
 
+from __future__ import absolute_import
 from yoyo import step
 
 __depends__ = {'20170513_01_JutYy-use-null-video-flags'}

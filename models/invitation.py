@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from lib.flyingcow import Model, Property
 from tornado.options import options
 
@@ -5,7 +6,7 @@ import postmark
 
 import hashlib
 import time
-import user
+from . import user
 from datetime import datetime
 
 

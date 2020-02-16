@@ -1,11 +1,12 @@
+from __future__ import absolute_import
 from datetime import datetime
 
 from lib.flyingcow import Model, Property
 from tornado.options import options
 
-import shake
-import user
-import post
+from . import shake
+from . import user
+from . import post
 
 
 class Subscription(Model):

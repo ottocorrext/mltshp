@@ -1,4 +1,5 @@
-from urlparse import urlparse, parse_qs
+from __future__ import absolute_import
+from six.moves.urllib.parse import urlparse, parse_qs
 import os
 import re
 import random
@@ -13,7 +14,7 @@ from tornado.options import define, options
 from BeautifulSoup import BeautifulSoup
 
 from models import Externalservice, User, Sourcefile, Sharedfile, Shake, ExternalRelationship, ShakeCategory
-from base import BaseHandler, require_membership
+from .base import BaseHandler, require_membership
 from lib.utilities import base36encode
 import lib.feathers
 
@@ -296,7 +297,7 @@ class SaveVideoHandler(BaseHandler):
             self.render("tools/save-video-error.html", message="We could not load the embed code for this file. Please contact support.")
             return
 
-        if j_oembed.has_key('type') and j_oembed['provider_name'] == 'Flickr' and j_oembed['type'] != 'video':
+        if 'type' in j_oembed and j_oembed['provider_name'] == 'Flickr' and j_oembed['type'] != 'video':
             self.render("tools/save-video-error.html", message="We could not load the embed code for this file. Please contact support.")
             return
 
@@ -348,7 +349,7 @@ class SaveVideoHandler(BaseHandler):
                 pass
 
         title = ''
-        if self.oembed_doc.has_key('title'):
+        if 'title' in self.oembed_doc:
             title = self.oembed_doc['title']
 
         shared_file = Sharedfile(user_id=current_user.id, name=url, content_type='text/html', source_id=source_file.id, title=title, source_url=url)
@@ -361,7 +362,7 @@ class SaveVideoHandler(BaseHandler):
         user_shake = Shake.get('user_id = %s and type=%s', current_user.id, 'user')
         shared_file.add_to_shake(self.destination_shake)
 
-        if self.oembed_doc.has_key('description'):
+        if 'description' in self.oembed_doc:
             shared_file.description = self.oembed_doc['description']
 
         self.write({'path' : "/p/%s" % (share_key)})

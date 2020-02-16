@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from datetime import datetime, timedelta
 import re
 
@@ -7,10 +8,10 @@ from lib.flyingcow import Model, Property
 from lib.utilities import pretty_date
 from BeautifulSoup import BeautifulSoup
 
-import user
-import notification
-import sharedfile
-import conversation
+from . import user
+from . import notification
+from . import sharedfile
+from . import conversation
 
 
 class Comment(Model):

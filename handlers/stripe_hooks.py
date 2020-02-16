@@ -1,8 +1,9 @@
+from __future__ import absolute_import
 import datetime
 
 from tornado.options import options
 
-from base import BaseHandler
+from .base import BaseHandler
 from models import User, PaymentLog
 
 import json

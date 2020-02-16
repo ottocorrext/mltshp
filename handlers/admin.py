@@ -1,10 +1,11 @@
+from __future__ import absolute_import
 import hashlib
 import time
 
 import tornado.web
 import postmark
 
-from base import BaseHandler
+from .base import BaseHandler
 from models import Sharedfile, User, Shake, Shakesharedfile, Invitation, Waitlist, ShakeCategory
 from lib.utilities import send_slack_notification
 

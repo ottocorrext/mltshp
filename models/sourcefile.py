@@ -1,8 +1,9 @@
+from __future__ import absolute_import
 import hashlib
 import cStringIO
 from os import path
 from datetime import datetime
-from urlparse import urlparse
+from six.moves.urllib.parse import urlparse
 import re
 
 from tornado.escape import url_escape, json_decode, json_encode

@@ -1,9 +1,11 @@
+from __future__ import absolute_import
 import random
 
 import test.base
 import test.factories
 from models import User, Sourcefile, Sharedfile, Shakesharedfile, Bookmark
 from lib.utilities import base36encode
+from six.moves import range
 
 class HomeTests(test.base.BaseAsyncTestCase):
     def setUp(self):

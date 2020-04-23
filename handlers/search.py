@@ -92,6 +92,8 @@ class SearchHandler(BaseHandler):
 
             elif term.startswith("*"):
                 self.add_error("q", "You cannot begin a search term with the * character")
+            elif "@" in term:
+                self.add_error("q", "You cannot use a search term with the @ character")
             else:
                 new_terms.append(term)
         query_str = " ".join(new_terms)
